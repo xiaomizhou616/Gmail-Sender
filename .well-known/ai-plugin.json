@@ -1,0 +1,25 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Gmail Sender",
+    "name_for_model": "GmailSender",
+    "description_for_human": "Send Gmail on behalf of users",
+    "description_for_model": "Send Gmail on behalf of users. Use it whenever a user asks to send emails. \n\nIf this is the first time you are using this service, the \"auth\" endpoint will be called to obtain your authorization before sending emails. If you have used this service before, this step will be skipped. Please provide the following information:\n- `user_id`: Email address of the sender.\n- `to`: Email address of the recipient.\n- `subject`: Subject of the email.\n- `body`: Body of the email.\n\nThe 'send_email' function will be used to send the email.\n\nOnce your emails have been sent, you will see the message \"Email sent successfully.\"",
+    "auth": {
+        "type": "oauth",
+        "client_url": "https://accounts.google.com/o/oauth2/v2/auth",
+        "scope": "https://www.googleapis.com/auth/gmail.send",
+        "authorization_url": "https://oauth2.googleapis.com/token",
+        "authorization_content_type": "application/json",
+        "verification_tokens": {
+            "openai": "your_openai_token"
+        }
+    },
+    "api": {
+        "type": "openapi",
+        "url": "https://your-app-url.com/.well-known/openapi.yaml",
+        "has_user_authentication": true
+    },
+    "logo_url": "https://your-app-url.com/.well-known/logo.png",
+    "contact_email": "hello@contact.com",
+    "legal_info_url": "http://example.com/legal-info"
+}

@@ -1,0 +1,96 @@
+openapi: 3.0.1
+info:
+  title: Gmail Sender 
+  description: Allows users to send emails through Gmail.
+  version: 1.0.0
+servers:
+  - url: 'https://your-app-url.com'
+paths:
+  /auth:
+    post:
+      operationId: auth
+      summary: Authorize the users if they use it for the first time.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+      responses:
+        '200':
+          description: Authorization successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Bad request. The request could not be understood or was missing required parameters.
+        '401':
+          description: Unauthorized. User authentication required.
+        '500':
+          description: Internal server error.
+  /send_email:
+    post:
+      operationId: sendEmail
+      summary: Send an email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailRequest'
+      responses:
+        '200':
+          description: Email sent successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailResponse'
+        '400':
+          description: Bad request. The request could not be understood or was missing required parameters.
+        '401':
+          description: Unauthorized. User authentication required.
+        '500':
+          description: Internal server error.
+components:
+  schemas:
+    AuthRequest:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Email address of the user.
+      required:
+        - user_id
+    AuthResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Authorization message.
+    SendEmailRequest:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Email address of the sender.
+        to:
+          type: string
+          description: Email address of the recipient.
+        subject:
+          type: string
+          description: Subject of the email.
+        body:
+          type: string
+          description: Body of the email.
+      required:
+        - user_id
+        - to
+        - subject
+        - body
+    SendEmailResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Confirmation message.
