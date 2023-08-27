@@ -4,7 +4,7 @@
 
 1. **Clone the repository**:
    ```bash
-   git clone [repository-url]
+   git clone git@github.com:xiaomizhou616/gmail-sender.git
    ```
 
 2. **Install the required package**:
