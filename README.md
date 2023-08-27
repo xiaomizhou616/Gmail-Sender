@@ -17,8 +17,7 @@
 
 ### 1. Use on ChatGPT
 
-- **Authenticate with your Gmail account**: 
-  - For first-time users.
+- **Authenticate with your Gmail account for first-time users**: 
 
 - **Provide the necessary email details**: 
   - Sender
@@ -26,8 +25,7 @@
   - Subject
   - Body
 
-- **Send the email**:
-  - Directly from ChatGPT.
+- **Send the email directly from ChatGPT**:
 
 ### 2. Use for Development
 
